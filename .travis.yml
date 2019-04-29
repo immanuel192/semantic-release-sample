@@ -28,11 +28,12 @@ jobs:
       script:
         - npm run test
     
-    - stage: deploy
-      name: "deploy"
+    - stage: release
+      name: "Release"
       if: branch == master && !fork
       node_js: 'node'
       script:
+        - echo '//registry.npmjs.org/:_authToken = ${NPM_TOKEN}' | cat - .npmrc > temp && mv temp .npmrc
         - npm run release
 notifications:
   email:
