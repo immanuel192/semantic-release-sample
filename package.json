@@ -1,0 +1,91 @@
+{
+  "name": "semantic-release-sample",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "reflect-metadata": "0.1.12"
+  },
+  "devDependencies": {
+    "@types/jest": "24.0.11",
+    "@commitlint/cli": "7.5.2",
+    "@commitlint/config-conventional": "7.5.0",
+    "husky": "1.3.1",
+    "lint-staged": "8.1.5",
+    "jest": "24.7.1",
+    "tslint-config-airbnb": "5.11.1",
+    "ts-jest": "24.0.1",
+    "ts-node": "8.0.2",
+    "tslint": "5.16.0",
+    "tsutils": "3.10.0",
+    "typescript": "3.4.4",
+    "semantic-release": "15.13.3"
+  },
+  "optionalDependencies": {
+    "reflect-metadata": "0.1.12"
+  },
+  "scripts": {
+    "lint": "tslint --exclude '**/*.d.ts' src/**/*.ts",
+    "test": "npm run lint && NODE_ENV=test jest --coverage --bail",
+    "release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/immanuel192/semantic-release-sample.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/immanuel192/semantic-release-sample/issues"
+  },
+  "homepage": "https://github.com/immanuel192/semantic-release-sample#readme",
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testRegex": ".spec.ts$",
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.ts",
+      "!<rootDir>/src/**/*.d.ts",
+      "!**/node_modules/**"
+    ],
+    "testEnvironment": "node"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "header-max-length": [
+        2,
+        "always",
+        100
+      ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "tslint --exclude '**/*.d.ts' src/**/*.ts --fix",
+      "git add"
+    ]
+  }
+}

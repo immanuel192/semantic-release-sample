@@ -1,0 +1,44 @@
+language: node_js
+node_js:
+- 10.12.0
+sudo: required
+dist: trusty
+
+branches:
+  only:
+  - master
+  - "/^feature.*$/"
+  - "/^(hot)?fix.*$/"
+  - "/^v[0-9].*$/"
+
+git:
+  depth: false
+
+cache:
+  apt: true
+  bundler: true
+  directories:	
+    - node_modules
+
+# Build stages
+jobs:
+  include:
+    - stage: test
+      name: "Unit test"
+      script:
+        - npm run test
+    
+    - stage: deploy
+      name: "deploy"
+      if: branch == master && !fork
+      node_js: 'node'
+      script:
+        - npm run release
+notifications:
+  email:
+    recipients:
+    - trungdt@absoft.vn
+
+env:
+  matrix:
+  - NODE_ENV=test

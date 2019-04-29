@@ -1,0 +1,2 @@
+# typescript-json-schema-generator
+ 
