@@ -22,7 +22,9 @@
     "tslint": "5.16.0",
     "tsutils": "3.10.0",
     "typescript": "3.4.4",
-    "semantic-release": "15.13.3"
+    "semantic-release": "15.13.3",
+    "@semantic-release/changelog": "3.0.2",
+    "@semantic-release/git": "7.0.8"
   },
   "optionalDependencies": {
     "reflect-metadata": "0.1.12"
@@ -86,6 +88,30 @@
     "src/**/*.ts": [
       "tslint --exclude '**/*.d.ts' src/**/*.ts --fix",
       "git add"
+    ]
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": true
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "package.json"
+          ],
+          "message": "chore(release): release <%= nextRelease.version %> - <%= new Date().toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %>\n\n<%= nextRelease.notes %>"
+        }
+      ],
+      "@semantic-release/github"
     ]
   }
 }

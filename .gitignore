@@ -16,3 +16,4 @@ package-lock.json
 yarn.lock
 *.js
 *.d.ts
+.npmrc
