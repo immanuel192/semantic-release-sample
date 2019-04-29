@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/immanuel192/semantic-release-sample/compare/v1.0.0...v1.0.1) (2019-04-29)
+
+
+### Bug Fixes
+
+* turn off npmPublish for sample repo ([cc5a39b](https://github.com/immanuel192/semantic-release-sample/commit/cc5a39b))
+
 # 1.0.0 (2019-04-29)
 
 
