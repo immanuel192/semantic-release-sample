@@ -23,5 +23,5 @@
 3. Add your github repo to Travis, then add the following 2 tokens to Travis Environment Variables `NPM_TOKEN` and `GH_TOKEN`
 
 ![Travis](./images/travis.jpg)
-
+ 
 4. Trigger build and enjoy. If you dont want to publish new version to NPM, set `npmPublish` to false (in `package.json`), also no need to set `NPM_TOKEN`.
