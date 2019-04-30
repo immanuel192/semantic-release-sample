@@ -19,7 +19,7 @@
 2. From your github account, go to [Developer Settings > Personal Access Token](https://github.com/settings/tokens) and create your own token that allow CI to push back new changes during releasing process. Select `scopes` as sample below.
 
 ![Github](./images/github.jpg)
-
+ 
 3. Add your github repo to Travis, then add the following 2 tokens to Travis Environment Variables `NPM_TOKEN` and `GH_TOKEN`
  
 ![Travis](./images/travis.jpg)
