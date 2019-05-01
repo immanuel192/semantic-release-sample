@@ -27,10 +27,10 @@ module.exports = {
     [
       "@semantic-release/release-notes-generator",
       {
-        "preset": "angular",
+        "config": './release.changelog.angular.js',
         "writerOpts": {
-          "transform": 123,
           "commitsSort": [
+            "type",
             "subject",
             "scope"
           ]
